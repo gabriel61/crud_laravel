@@ -10,7 +10,7 @@ use App\Models\User;
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Lista todos os usuários da tabela users e retorna um objeto JSON contendo os usuários.
      */
     public function index()
     {
@@ -21,7 +21,9 @@ class UserController extends Controller
 
 
     /**
-     * Store a newly created resource in storage.
+     * Este método cria um novo usuário na tabela users.
+     * Ele recebe os dados do novo usuário através de uma requisição HTTP POST e valida se os campos name, email e password estão preenchidos corretamente.
+     * Se estiverem, o usuário é criado e um objeto JSON contendo uma mensagem de sucesso e o usuário criado é retornado.
      */
     public function create(Request $request)
     {
@@ -44,7 +46,9 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Este método retorna um usuário específico da tabela users.
+     * Ele recebe o id do usuário como parâmetro através de uma requisição HTTP GET e busca o usuário correspondente no banco de dados.
+     * Se encontrar, retorna um objeto JSON contendo o usuário. Se não encontrar, retorna uma mensagem de erro e um código HTTP 404.
      */
     public function show($id)
     {
@@ -58,15 +62,12 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
+     * Este método atualiza um usuário específico na tabela users.
+     * Ele recebe o id do usuário como parâmetro através de uma requisição HTTP PUT e busca o usuário correspondente no banco de dados.
+     * Se encontrar, valida os campos name, email e password da requisição e atualiza as informações do usuário.
+     * Se o campo password estiver vazio, ele não é atualizado.
+     * Retorna um objeto JSON contendo uma mensagem de sucesso e o usuário atualizado.
+     * Se não encontrar o usuário, retorna uma mensagem de erro e um código HTTP 404.
      */
     public function update(Request $request, $id)
     {
@@ -98,7 +99,10 @@ class UserController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Este método exclui um usuário específico da tabela users.
+     * Ele recebe o id do usuário como parâmetro através de uma requisição HTTP DELETE e busca o usuário correspondente no banco de dados.
+     * Se encontrar, o usuário é excluído e uma mensagem de sucesso é retornada em um objeto JSON.
+     * Se não encontrar o usuário, retorna uma mensagem de erro e um código HTTP 404.
      */
     public function destroy($id)
     {

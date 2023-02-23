@@ -45,7 +45,7 @@ O projeto utiliza o Laravel 8 e inclui um arquivo de rotas em routes/api.php, um
 
 # O que foi criado ↴
 
-## AuthController.php
+## [AuthController.php](https://github.com/gabriel61/crud_laravel/blob/master/app/Http/Controllers/AuthController.php)
 - O controlador AuthController.php contém um método login que é responsável por autenticar um usuário e gerar um token de acesso. 
 - Ele recebe as credenciais do usuário (email e senha) na requisição POST e retorna um JSON com o token de acesso e informações do usuário. 
 - O token é gerado utilizando o método `createToken` da classe `User` e é retornado no formato `Bearer {token}` no header da resposta.
@@ -69,7 +69,7 @@ class AuthController extends Controller
 }
 ```
 
-## UserController.php
+## [UserController.php](https://github.com/gabriel61/crud_laravel/blob/master/app/Http/Controllers/UserController.php)
 - Gerencia as operações relacionadas ao usuário da aplicação. 
 - Cada função do controlador é responsável por realizar uma operação específica, como listar todos os usuários, criar um novo usuário, atualizar um usuário existente ou excluir um usuário.
 
@@ -188,7 +188,7 @@ public function create(Request $request)
 
 ## Rotas
 
-### Api.php
+### [Api.php](https://github.com/gabriel61/crud_laravel/blob/master/routes/api.php)
 - A primeira rota define o endpoint `/login` para o método `login` do `AuthController` através do método `post()`.
 - A segunda rota define o endpoint `/users` para o método `create` do `UserController` através do método `post()`. Essa rota não utiliza middleware de autenticação, pois é responsável por criar novos usuários.
 - O middleware `auth:sanctum` é utilizado para proteger as rotas que seguem. Esse middleware exige que o usuário esteja autenticado para acessar essas rotas.
@@ -207,7 +207,7 @@ Route::middleware('auth:sanctum')->group(function () {
 ```
 ## Models
 
-### User.php
+### [User.php](https://github.com/gabriel61/crud_laravel/blob/master/app/Models/User.php)
 - Este é o modelo para a tabela de usuários do banco de dados. 
 - O modelo contém propriedades que definem:
 1. Quais atributos do usuário podem ser atribuídos em massa (definidos como `fillable`),
@@ -252,10 +252,7 @@ class User extends Authenticatable
 }
 ```
 
-
-```php
-
-```
+---
 
 ### ✒️ Autor
 

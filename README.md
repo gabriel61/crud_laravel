@@ -13,7 +13,7 @@
 
 Este projeto é um exemplo de um CRUD (Create, Read, Update, Delete) em Laravel com autenticação por token. Ele permite que um usuário autenticado execute operações CRUD em uma lista de usuários armazenados em um banco de dados.
 
-O projeto utiliza o Laravel 8 e inclui um arquivo de rotas em routes/api.php, um controlador UserController.php para gerenciar as operações CRUD e um controlador AuthController.php para lidar com a autenticação de usuários e a geração de tokens de acesso.
+O projeto utiliza o Laravel e inclui um arquivo de rotas em routes/api.php, um controlador UserController.php para gerenciar as operações CRUD e um controlador AuthController.php para lidar com a autenticação de usuários e a geração de tokens de acesso.
 
 ## ⚒ Requisitos
 - PHP >= 7.3

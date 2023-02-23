@@ -35,18 +35,20 @@ O projeto utiliza o Laravel 8 e inclui um arquivo de rotas em routes/api.php, um
 2. Crie um novo usuário fazendo uma requisição POST para `/api/register` com os seguintes parâmetros no corpo da requisição: name, email e password
 3. Faça login na API fazendo uma requisição POST para `/api/login` com os seguintes parâmetros no corpo da requisição: email e password
 4. Utilize o token gerado no login nas requisições para as rotas protegidas (index, show, store, update, delete) no header `Authorization: Bearer {token}`
-5. Execute as operações CRUD com as rotas `/api/users` utilizando os métodos HTTP GET, POST, PUT e DELETE
+5. Execute as operações CRUD com as rotas `/api/users` utilizando os métodos HTTP `GET`, `POST`, `PUT` e `DELETE`
 
 ## API endpoints
 1. `GET /api/users`: lista todos os usuários
 2. `POST /api/users`: cria um novo usuário
-3. `PUT /api/users/{id}: atualiza um usuário específico
-4. `DELETE /api/users/{id}: exclui um usuário específico
+3. `PUT /api/users/{id}`: atualiza um usuário específico
+4. `DELETE /api/users/{id}`: exclui um usuário específico
 
 # O que foi criado ↴
 
 ## AuthController.php
-O controlador AuthController.php contém um método login que é responsável por autenticar um usuário e gerar um token de acesso. Ele recebe as credenciais do usuário (email e senha) na requisição POST e retorna um JSON com o token de acesso e informações do usuário. O token é gerado utilizando o método createToken da classe User e é retornado no formato Bearer {token} no header da resposta.
+- O controlador AuthController.php contém um método login que é responsável por autenticar um usuário e gerar um token de acesso. 
+- Ele recebe as credenciais do usuário (email e senha) na requisição POST e retorna um JSON com o token de acesso e informações do usuário. 
+- O token é gerado utilizando o método `createToken` da classe `User` e é retornado no formato `Bearer {token}` no header da resposta.
 
 ```php
 class AuthController extends Controller
@@ -68,10 +70,11 @@ class AuthController extends Controller
 ```
 
 ## UserController.php
-Gerencia as operações relacionadas ao usuário da aplicação. Cada função do controlador é responsável por realizar uma operação específica, como listar todos os usuários, criar um novo usuário, atualizar um usuário existente ou excluir um usuário.
+- Gerencia as operações relacionadas ao usuário da aplicação. 
+- Cada função do controlador é responsável por realizar uma operação específica, como listar todos os usuários, criar um novo usuário, atualizar um usuário existente ou excluir um usuário.
 
 ### Index
-Lista todos os usuários da tabela users e retorna um objeto JSON contendo os usuários.
+- Lista todos os usuários da tabela users e retorna um objeto JSON contendo os usuários.
 ```php
     public function index()
     {
@@ -82,9 +85,9 @@ Lista todos os usuários da tabela users e retorna um objeto JSON contendo os us
 ```
 
 ### Create
-Este método cria um novo usuário na tabela users. 
-Ele recebe os dados do novo usuário através de uma requisição HTTP POST e valida se os campos name, email e password estão preenchidos corretamente. 
-Se estiverem, o usuário é criado e um objeto JSON contendo uma mensagem de sucesso e o usuário criado é retornado.
+- Este método cria um novo usuário na tabela users. 
+- Ele recebe os dados do novo usuário através de uma requisição HTTP `POST` e valida se os campos name, email e password estão preenchidos corretamente. 
+- Se estiverem, o usuário é criado e um objeto JSON contendo uma mensagem de sucesso e o usuário criado é retornado.
 ```php
 public function create(Request $request)
     {
@@ -106,12 +109,12 @@ public function create(Request $request)
         ]);
     }
 ```
-A linha `$user->password = Hash::make($validatedData['password']);` é responsável por gerar o hash da senha informada pelo usuário antes de salvar no banco de dados. A função `Hash::make()` é fornecida pelo Laravel e utiliza um algoritmo de hash forte e aleatório para criar uma string segura e irreversível.
+- A linha `$user->password = Hash::make($validatedData['password']);` é responsável por gerar o hash da senha informada pelo usuário antes de salvar no banco de dados. - A função `Hash::make()` é fornecida pelo Laravel e utiliza um algoritmo de hash forte e aleatório para criar uma string segura e irreversível.
 
 ### Show
-Este método retorna um usuário específico da tabela users. 
-Ele recebe o id do usuário como parâmetro através de uma requisição HTTP GET e busca o usuário correspondente no banco de dados. 
-Se encontrar, retorna um objeto JSON contendo o usuário. Se não encontrar, retorna uma mensagem de erro e um código HTTP 404.
+- Este método retorna um usuário específico da tabela users. 
+- Ele recebe o id do usuário como parâmetro através de uma requisição HTTP `GET` e busca o usuário correspondente no banco de dados. 
+- Se encontrar, retorna um objeto JSON contendo o usuário. Se não encontrar, retorna uma mensagem de erro e um código `HTTP 404`.
 ```php
     public function show($id)
     {
@@ -126,11 +129,11 @@ Se encontrar, retorna um objeto JSON contendo o usuário. Se não encontrar, ret
 ```
 
 ### Update
-Este método atualiza um usuário específico na tabela users. 
-Ele recebe o id do usuário como parâmetro através de uma requisição HTTP PUT e busca o usuário correspondente no banco de dados. 
-Se encontrar, valida os campos name, email e password da requisição e atualiza as informações do usuário. 
-Se o campo password estiver vazio, ele não é atualizado. 
-Retorna um objeto JSON contendo uma mensagem de sucesso e o usuário atualizado. 
+- Este método atualiza um usuário específico na tabela users. 
+- Ele recebe o id do usuário como parâmetro através de uma requisição HTTP `PUT` e busca o usuário correspondente no banco de dados. 
+- Se encontrar, valida os campos name, email e password da requisição e atualiza as informações do usuário. 
+- Se o campo password estiver vazio, ele não é atualizado. 
+- Retorna um objeto JSON contendo uma mensagem de sucesso e o usuário atualizado. 
 ```php
     public function update(Request $request, $id)
     {
@@ -163,9 +166,9 @@ Retorna um objeto JSON contendo uma mensagem de sucesso e o usuário atualizado.
 ```
 
 ### Destroy
-Este método exclui um usuário específico da tabela users. 
-Ele recebe o id do usuário como parâmetro através de uma requisição HTTP DELETE e busca o usuário correspondente no banco de dados. 
-Se encontrar, o usuário é excluído e uma mensagem de sucesso é retornada em um objeto JSON.
+- Este método exclui um usuário específico da tabela users. 
+- Ele recebe o id do usuário como parâmetro através de uma requisição HTTP `DELETE` e busca o usuário correspondente no banco de dados. 
+- Se encontrar, o usuário é excluído e uma mensagem de sucesso é retornada em um objeto JSON.
 ```php
     public function destroy($id)
     {
@@ -186,10 +189,10 @@ Se encontrar, o usuário é excluído e uma mensagem de sucesso é retornada em 
 ## Rotas
 
 ### Api.php
-A primeira rota define o endpoint `/login` para o método `login` do `AuthController` através do método `post()`.
-A segunda rota define o endpoint `/users` para o método `create` do `UserController` através do método `post()`. Essa rota não utiliza middleware de autenticação, pois é responsável por criar novos usuários.
-O middleware `auth:sanctum` é utilizado para proteger as rotas que seguem. Esse middleware exige que o usuário esteja autenticado para acessar essas rotas.
-As rotas dentro do grupo protegido por middleware definem os endpoints `/users`, `/users/{id}`, `/users/{id}` e `/users/{id}` respectivamente para os métodos `index`, `show`, `update` e `destroy` do `UserController`. Essas rotas são acessíveis apenas para usuários autenticados.
+- A primeira rota define o endpoint `/login` para o método `login` do `AuthController` através do método `post()`.
+- A segunda rota define o endpoint `/users` para o método `create` do `UserController` através do método `post()`. Essa rota não utiliza middleware de autenticação, pois é responsável por criar novos usuários.
+- O middleware `auth:sanctum` é utilizado para proteger as rotas que seguem. Esse middleware exige que o usuário esteja autenticado para acessar essas rotas.
+- As rotas dentro do grupo protegido por middleware definem os endpoints `/users`, `/users/{id}`, `/users/{id}` e `/users/{id}` respectivamente para os métodos `index`, `show`, `update` e `destroy` do `UserController`. Essas rotas são acessíveis apenas para usuários autenticados.
 
 ```php
 Route::post('/login', [AuthController::class, 'login']);
@@ -205,11 +208,11 @@ Route::middleware('auth:sanctum')->group(function () {
 ## Models
 
 ### User.php
-Este é o modelo para a tabela de usuários do banco de dados. 
-O modelo contém propriedades que definem:
-- Quais atributos do usuário podem ser atribuídos em massa (definidos como `fillable`),
-- Quais atributos devem ser ocultos quando o usuário é serializado (definidos como `hidden`) e
-- Quais atributos devem ser convertidos em tipos de dados específicos (definidos como `casts`).
+- Este é o modelo para a tabela de usuários do banco de dados. 
+- O modelo contém propriedades que definem:
+1. Quais atributos do usuário podem ser atribuídos em massa (definidos como `fillable`),
+2. Quais atributos devem ser ocultos quando o usuário é serializado (definidos como `hidden`) e
+3. Quais atributos devem ser convertidos em tipos de dados específicos (definidos como `casts`).
 
 ```php
 class User extends Authenticatable

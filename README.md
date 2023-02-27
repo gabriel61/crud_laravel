@@ -9,28 +9,27 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-# 💻 Sobre o projeto
+# Sobre o projeto
 
 Este projeto é um exemplo de um CRUD (Create, Read, Update, Delete) em Laravel com autenticação por token. Ele permite que um usuário autenticado execute operações CRUD em uma lista de usuários armazenados em um banco de dados.
 
 O projeto utiliza o Laravel e inclui um arquivo de rotas em routes/api.php, um controlador UserController.php para gerenciar as operações CRUD e um controlador AuthController.php para lidar com a autenticação de usuários e a geração de tokens de acesso.
 
-## ⚒ Requisitos
+## Requisitos
 - PHP >= 7.3
 - Composer
 - Banco de dados MySQL
 - Postman (opcional, para testar a API)
 
-## 🎮 Instalação
+## Instalação
 1. Clone o repositório do projeto para um diretório local
 2. Abra o terminal na pasta raiz do projeto e execute o comando `composer install` para instalar as dependências do Laravel
 3. Renomeie o arquivo `.env.example` para `.env` e configure a conexão do banco de dados
-4. Execute o comando `php artisan key:generate` para gerar uma chave para a aplicação
-5. Execute o comando `php artisan migrate` para criar as tabelas no banco de dados
-6. Execute o comando `php artisan db:seed` para popular o banco de dados com alguns registros de exemplo
-7. Execute o comando `php artisan serve` para iniciar o servidor local
+4. Execute o comando `php artisan migrate` para criar as tabelas no banco de dados
+5. Execute o comando `php artisan db:seed` para popular o banco de dados com alguns registros de exemplo
+6. Execute o comando `php artisan serve` para iniciar o servidor local
 
-## 🦾 Uso
+## Uso
 1. Abra o Postman ou outra ferramenta similar para testar a API
 2. Crie um novo usuário fazendo uma requisição POST para `/api/register` com os seguintes parâmetros no corpo da requisição: name, email e password
 3. Faça login na API fazendo uma requisição POST para `/api/login` com os seguintes parâmetros no corpo da requisição: email e password
